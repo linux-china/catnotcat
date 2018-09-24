@@ -2,6 +2,10 @@
 start:
   ./mvnw -q spring-boot:run -Dspring.cloud.gcp.credentials.location=file:///$HOME/catnotcat.json
 
+# build
+build:
+  ./mvnw -q -DskipTests clean package
+
 # test cat
 test_cat:
   curl -Lo cat.jpg https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Felis_silvestris_catus_lying_on_rice_straw.jpg/320px-Felis_silvestris_catus_lying_on_rice_straw.jpg
