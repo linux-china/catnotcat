@@ -6,6 +6,10 @@ start:
 build:
   ./mvnw -q -DskipTests clean package
 
+jib_build:
+  export GCP_PROJECT=$(gcloud config get-value core/project)
+  ./mvnw clean compile com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/${GCP_PROJECT}/catnotcat-function
+
 # test cat
 test_cat:
   curl -Lo cat.jpg https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Felis_silvestris_catus_lying_on_rice_straw.jpg/320px-Felis_silvestris_catus_lying_on_rice_straw.jpg
